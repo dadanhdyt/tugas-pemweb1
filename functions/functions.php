@@ -4,6 +4,7 @@ function dbConfig($key): string
 {
     return $GLOBALS['config_db'][$key] ?? null;
 }
+
 //fungsi untuk koneksi ke database
 function connection()
 {
@@ -22,7 +23,6 @@ function connection()
     }
 
     return $conn;
-
 }
 //fungsi untuk membuat database
 function createDatabase()
@@ -72,7 +72,6 @@ function seed_data_mahasiswa()
     $query = "INSERT INTO mahasiswa (nama_mahasiswa,nim_mahasiswa,telp_mahasiswa,alamat_mahasiswa) VALUES {$valuesStatement}";
     $executeQuery = connection()->query($query);
     return $executeQuery;
-
 }
 function getDataMahasiswa(): array
 {
@@ -84,4 +83,3 @@ function getDataMahasiswa(): array
     }
     return $data;
 }
-?>

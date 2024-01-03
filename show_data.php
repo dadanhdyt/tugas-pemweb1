@@ -4,8 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-   
+    <title>Show Data Mahasiswa</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            border:2px solid;
+        }
+        table tr{
+            text-align:center;
+            border:2px solid red;
+        }
+        table th{
+            font-weight: bold;
+            background:red;
+            color:white;
+        }
+    </style>
 </head>
 
 <body>
