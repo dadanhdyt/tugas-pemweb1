@@ -5,6 +5,11 @@ function dbConfig($key): string
     return $GLOBALS['config_db'][$key] ?? null;
 }
 
+function getDataById(int $id){
+  $db = connection();
+  return $db->query("SELECT * FROM mahasiswa WHERE id='$id'");
+}
+
 //fungsi untuk koneksi ke database
 function connection()
 {
@@ -82,4 +87,28 @@ function getDataMahasiswa(): array
         $data[] = $row;
     }
     return $data;
+}
+
+function deleteData(int $id)
+{
+    $conn = connection();
+    return $conn->query("DELETE FROM mahasiswa WHERE id='{$id}'");
+}
+
+function tambahData($namaMahasiswa, $nimMahasiswa, $telpMahasiswa, $alamatMahasiswa){
+    $conn = connection();
+    return $conn->query("INSERT INTO mahasiswa (nama_mahasiswa,nim_mahasiswa,telp_mahasiswa,alamat_mahasiswa) VALUES('$namaMahasiswa','$nimMahasiswa','$telpMahasiswa','$alamatMahasiswa')");
+}
+
+function updateDataMahasiswa(int $id, string $nama_mahasiswa, string $nim_mahasiswa,string $telp_mahasiswa,string $alamat_mahasiswa)
+{
+    echo $nama_mahasiswa,$nim_mahasiswa,$telp_mahasiswa,$alamat_mahasiswa;
+    $db = connection();
+    $updateQuery = $db->query("UPDATE mahasiswa SET
+        nama_mahasiswa = '{$nama_mahasiswa}',
+        nim_mahasiswa='{$nim_mahasiswa}',
+        telp_mahasiswa = '{$telp_mahasiswa}',
+        alamat_mahasiswa = '{$alamat_mahasiswa}'
+     WHERE id='{$id}'");
+     return $updateQuery;
 }
